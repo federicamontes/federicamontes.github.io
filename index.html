@@ -1,65 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Federica Montesano | Academic Homepage</title>
     <style>
+        :root {
+            --primary-color: #0056b3;
+            --text-color: #2b2b2b;
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --border-color: #e5e5e5;
+        }
+
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 800px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 750px;
             margin: 40px auto;
             padding: 0 20px;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #111;
+        }
+
+        .affiliation {
+            font-size: 1.05rem;
+            color: #555;
+            margin-top: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            gap: 15px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        nav button:hover {
+            color: var(--primary-color);
+            background-color: #f0f0f0;
+        }
+
+        nav button.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -8px; /* Alignment with border */
+        }
+
+        /* Sections */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Contact List Styling */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .contact-list strong {
+            display: inline-block;
+            width: 90px;
+            color: #444;
+        }
+
+        /* Teaching Section Card Layout */
+        .course-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .resource-section {
+            margin-top: 15px;
+        }
+
+        .resource-section h4 {
+            margin-bottom: 8px;
             color: #333;
         }
-        h1, h2 { color: #111; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .course { margin-bottom: 20px; }
-        ul { list-style-type: square; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .badge-pdf {
+            font-size: 0.8rem;
+            background: #e6f0fa;
+            color: var(--primary-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- AFFILIATION SECTION -->
+    <!-- HEADER / TITLE -->
     <header>
         <h1>Federica Montesano</h1>
-        <p><strong>Research Fellow</strong><br>
-        DICII<br>
-        University of Rome Tor Vergata<br>
-        Email: <a href="mailto:federica.montesano@uniroma2.it">federica.montesano@uniroma2.it</a><br>
-        Office: -</p>
+        <p class="affiliation">
+            Research Fellow<br>
+            Department of Civil Engineering and Computer Science (DICII)<br>
+            University of Rome Tor Vergata
+        </p>
     </header>
 
+    <!-- NAVIGATION TABS -->
+    <nav>
+        <button id="tab-home" class="active" onclick="switchTab('home')">Home</button>
+        <button id="tab-teaching" onclick="switchTab('teaching')">Teaching</button>
+    </nav>
+
     <main>
-        <!-- ABOUT / BIO -->
-        <section>
-            <h2>About</h2>
-            <p>Welcome!</p>
+        <!-- HOME PAGE (DEFAULT) -->
+        <section id="content-home" class="tab-content active">
+            <h2>Contacts & Links</h2>
+            <ul class="contact-list">
+                <li><strong>Email:</strong> <a href="mailto:federica.montesano@uniroma2.it">federica.montesano@uniroma2.it</a></li>
+                <li><strong>ORCID:</strong> <a href="https://orcid.org/0000-0002-9875-6601" target="_blank">orcid</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/federicamontes" target="_blank">Github</a></li>
+                <li><strong>Office:</strong> . -</li>
+            </ul>
         </section>
 
-        <!-- TEACHING SECTION -->
-        <section>
+        <!-- TEACHING PAGE -->
+        <section id="content-teaching" class="tab-content">
             <h2>Teaching</h2>
 
-            <div class="course">
-                <h3>Ingegneria degli Algoritmi: Laurea Triennale, A.A. 2026/2027</h3>
+            <div class="course-card">
+                <h3>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h3>
                 
-                <h4>Slides</h4>
-                <ul>
-                    <li>Lecture 1: Introduzione — <a href="-" download>PDF</a></li>
-                    <li>Lecture 2: Dati Elementari — <a href="-" download>PDF</a></li>
-                </ul>
+                <div class="resource-section">
+                    <h4>Slides</h4>
+                    <ul>
+                        <li>Lecture 1: Introduzione <a href="slides/lecture1.pdf" class="badge-pdf" target="_blank">PDF</a></li>
+                        <li>Lecture 2: Dati Elementari <a href="slides/lecture2.pdf" class="badge-pdf" target="_blank">PDF</a></li>
+                    </ul>
+                </div>
 
-                <h4>Exercises & Homework</h4>
-                <ul>
-                    <li>Exercise Sheet 1: Tipi di dato — <a href="-" download>PDF</a></li>
-                    <li>Exercise Sheet 1 Soluzioni — <a href="-" download>PDF</a></li>
-                </ul>
+                <div class="resource-section">
+                    <h4>Esercitazioni e Homework</h4>
+                    <ul>
+                        <li>Esercitazione 1: Tipi di dato <a href="exercises/sheet1.pdf" class="badge-pdf" target="_blank">PDF</a></li>
+                        <li>Esercitazione 1: Soluzioni <a href="exercises/sheet1_sol.pdf" class="badge-pdf" target="_blank">PDF</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- TAB SWITCHING SCRIPT -->
+    <script>
+        function switchTab(tabName) {
+            // Hide all section contents
+            document.querySelectorAll('.tab-content').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Deactivate all navigation buttons
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Activate chosen section & button
+            document.getElementById('content-' + tabName).classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
