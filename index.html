@@ -8,9 +8,11 @@
         :root {
             --primary-color: #0056b3;
             --text-color: #2b2b2b;
-            --bg-color: #fafafa;
+            --bg-color: #fcfcfc;
             --card-bg: #ffffff;
-            --border-color: #e5e5e5;
+            --border-color: #e2e8f0;
+            --orcid-color: #a6ce39;
+            --github-color: #24292e;
         }
 
         body {
@@ -25,28 +27,30 @@
 
         /* Header */
         header {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: 2rem;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            margin-bottom: 6px;
             color: #111;
+            letter-spacing: -0.5px;
         }
 
         .affiliation {
             font-size: 1.05rem;
-            color: #555;
+            color: #4a5568;
             margin-top: 0;
+            line-height: 1.5;
         }
 
         /* Navigation Bar */
         nav {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             border-bottom: 2px solid var(--border-color);
-            margin-bottom: 30px;
-            padding-bottom: 5px;
+            margin-bottom: 35px;
+            padding-bottom: 2px;
         }
 
         nav button {
@@ -54,7 +58,7 @@
             border: none;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #666;
+            color: #718096;
             padding: 8px 12px;
             cursor: pointer;
             border-radius: 6px;
@@ -63,13 +67,13 @@
 
         nav button:hover {
             color: var(--primary-color);
-            background-color: #f0f0f0;
+            background-color: #edf2f7;
         }
 
         nav button.active {
             color: var(--primary-color);
             border-bottom: 3px solid var(--primary-color);
-            margin-bottom: -8px; /* Alignment with border */
+            margin-bottom: -5px; /* Aligns indicator with bottom border */
         }
 
         /* Sections */
@@ -81,48 +85,123 @@
             display: block;
         }
 
-        /* Contact List Styling */
-        .contact-list {
-            list-style: none;
-            padding: 0;
+        /* Contacts & Links Cards */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
             margin-top: 20px;
         }
 
-        .contact-list li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .contact-list strong {
-            display: inline-block;
-            width: 90px;
-            color: #444;
+        .contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            fill: #4a5568;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #718096;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2d3748;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        a.contact-value:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* External Badges for Links */
+        .badge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            color: white !important;
+            font-weight: 600;
+            text-decoration: none !important;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+
+        .badge-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .badge-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .badge-orcid {
+            background-color: var(--orcid-color);
+        }
+
+        .badge-github {
+            background-color: var(--github-color);
         }
 
         /* Teaching Section Card Layout */
         .course-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px 24px;
+            border-radius: 10px;
+            padding: 24px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
 
         .course-card h3 {
             margin-top: 0;
             color: var(--primary-color);
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
+            font-size: 1.25rem;
         }
 
         .resource-section {
-            margin-top: 15px;
+            margin-top: 18px;
         }
 
         .resource-section h4 {
             margin-bottom: 8px;
-            color: #333;
+            color: #2d3748;
+            font-size: 1.05rem;
         }
 
         ul {
@@ -131,26 +210,23 @@
         }
 
         li {
-            margin-bottom: 6px;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            margin-bottom: 8px;
         }
 
         .badge-pdf {
             font-size: 0.8rem;
-            background: #e6f0fa;
+            background: #ebf8ff;
             color: var(--primary-color);
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
             font-weight: 600;
-            margin-left: 6px;
+            margin-left: 8px;
+            text-decoration: none;
+            border: 1px solid #bee3f8;
+        }
+
+        .badge-pdf:hover {
+            background: #bee3f8;
         }
     </style>
 </head>
@@ -176,12 +252,42 @@
         <!-- HOME PAGE (DEFAULT) -->
         <section id="content-home" class="tab-content active">
             <h2>Contacts & Links</h2>
-            <ul class="contact-list">
-                <li><strong>Email:</strong> <a href="mailto:federica.montesano@uniroma2.it">federica.montesano@uniroma2.it</a></li>
-                <li><strong>ORCID:</strong> <a href="https://orcid.org/0000-0002-9875-6601" target="_blank">orcid</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/federicamontes" target="_blank">Github</a></li>
-                <li><strong>Office:</strong> . -</li>
-            </ul>
+            
+            <div class="contacts-grid">
+                <!-- Email -->
+                <div class="contact-card">
+                    <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <div class="contact-info">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:federica.montesano@uniroma2.it" class="contact-value">federica.montesano@uniroma2.it</a>
+                    </div>
+                </div>
+
+                <!-- Office -->
+                <div class="contact-card">
+                    <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="contact-info">
+                        <span class="contact-label">Office</span>
+                        <span class="contact-value">DICII, Building -</span>
+                    </div>
+                </div>
+
+                <!-- ORCID Button -->
+                <div class="contact-card">
+                    <a href="https://orcid.org/0000-0002-9875-6601" target="_blank" class="badge-link badge-orcid">
+                        <svg viewBox="0 0 256 256"><path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.5-56.8 53.5h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4zM78.6 60.1c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="#fff"/></svg>
+                        ORCID Profile
+                    </a>
+                </div>
+
+                <!-- GitHub Button -->
+                <div class="contact-card">
+                    <a href="https://github.com/federicamontes" target="_blank" class="badge-link badge-github">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub Profile
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- TEACHING PAGE -->
@@ -213,17 +319,13 @@
     <!-- TAB SWITCHING SCRIPT -->
     <script>
         function switchTab(tabName) {
-            // Hide all section contents
             document.querySelectorAll('.tab-content').forEach(section => {
                 section.classList.remove('active');
             });
-
-            // Deactivate all navigation buttons
             document.querySelectorAll('nav button').forEach(button => {
                 button.classList.remove('active');
             });
 
-            // Activate chosen section & button
             document.getElementById('content-' + tabName).classList.add('active');
             document.getElementById('tab-' + tabName).classList.add('active');
         }
