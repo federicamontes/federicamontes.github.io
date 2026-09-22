@@ -13,11 +13,12 @@
             --border-color: #e2e8f0;
             --orcid-color: #a6ce39;
             --github-color: #24292e;
+            --dblp-color: #004f9e;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 750px;
+            max-width: 780px;
             margin: 40px auto;
             padding: 0 20px;
             line-height: 1.6;
@@ -163,6 +164,8 @@
             font-weight: 600;
             text-decoration: none !important;
             font-size: 0.95rem;
+            width: 100%;
+            box-sizing: border-box;
             transition: opacity 0.2s ease, transform 0.15s ease;
         }
 
@@ -175,6 +178,7 @@
             width: 20px;
             height: 20px;
             fill: white;
+            flex-shrink: 0;
         }
 
         .badge-orcid {
@@ -185,8 +189,12 @@
             background-color: var(--github-color);
         }
 
-        /* Education Section Styling */
-        .education-item {
+        .badge-dblp {
+            background-color: var(--dblp-color);
+        }
+
+        /* Education & Experience Items */
+        .timeline-item {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
@@ -195,7 +203,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
 
-        .education-header {
+        .timeline-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -204,30 +212,31 @@
             gap: 8px;
         }
 
-        .education-degree {
+        .timeline-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: #2d3748;
             margin: 0;
         }
 
-        .education-date {
-            font-size: 0.9rem;
+        .timeline-date {
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary-color);
             background: #ebf8ff;
             padding: 2px 10px;
             border-radius: 12px;
             border: 1px solid #bee3f8;
+            white-space: nowrap;
         }
 
-        .education-institution {
+        .timeline-subtitle {
             font-size: 0.95rem;
             color: #4a5568;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .education-details {
+        .timeline-details {
             font-size: 0.95rem;
             color: #4a5568;
             margin-top: 8px;
@@ -235,11 +244,30 @@
             border-top: 1px dashed var(--border-color);
         }
 
-        .education-details p {
+        .timeline-details p {
             margin: 4px 0;
         }
 
-        /* Teaching Section Card Layout */
+        /* Research Interest Badges */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #cbd5e0;
+        }
+
+        /* Teaching Section Layout */
         .course-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -299,7 +327,7 @@
     <header>
         <h1>Federica Montesano</h1>
         <p class="affiliation">
-            Research Fellow<br>
+            PhD, Research Fellow<br>
             Department of Civil Engineering and Computer Science (DICII)<br>
             University of Rome Tor Vergata
         </p>
@@ -308,6 +336,7 @@
     <!-- NAVIGATION TABS -->
     <nav>
         <button id="tab-home" class="active" onclick="switchTab('home')">Home</button>
+        <button id="tab-bio" onclick="switchTab('bio')">Bio</button>
         <button id="tab-teaching" onclick="switchTab('teaching')">Teaching</button>
     </nav>
 
@@ -326,18 +355,17 @@
                     </div>
                 </div>
 
-                <!-- Office -->
+                <!-- DBLP Button (Replaced Office) -->
                 <div class="contact-card">
-                    <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <div class="contact-info">
-                        <span class="contact-label">Office</span>
-                        <span class="contact-value">DICII, Building -</span>
-                    </div>
+                    <a href="https://dblp.org/pid/322/9845.html" target="_blank" class="badge-link badge-dblp">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        DBLP Profile
+                    </a>
                 </div>
 
                 <!-- ORCID Button -->
                 <div class="contact-card">
-                    <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" class="badge-link badge-orcid">
+                    <a href="https://orcid.org/0000-0002-9875-6601" target="_blank" class="badge-link badge-orcid">
                         <svg viewBox="0 0 256 256"><path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.5-56.8 53.5h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4zM78.6 60.1c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z" fill="#fff"/></svg>
                         ORCID Profile
                     </a>
@@ -356,32 +384,114 @@
             <h2>Education</h2>
 
             <!-- Ph.D. -->
-            <div class="education-item">
-                <div class="education-header">
-                    <h3 class="education-degree">Ph.D. in Computer Science, Robotics and GeoInformation</h3>
-                    <span class="education-date">Nov 2021 – Oct 2024</span>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Ph.D. in Computer Science, Robotics and GeoInformation</h3>
+                    <span class="timeline-date">Nov 2021 – Oct 2024</span>
                 </div>
-                <div class="education-institution">
+                <div class="timeline-subtitle">
                     <strong>University of Rome Tor Vergata</strong> &bull; Grade: Top 5% (Outstanding)
                 </div>
-                <div class="education-details">
+                <div class="timeline-details">
                     <p><strong>Thesis Title:</strong> <em>Innovative Solutions for Speculative Parallel Discrete Event Simulation on Multi-core Shared-memory Machines</em></p>
                     <p><strong>Supervisor:</strong> Francesco Quaglia &bull; <strong>Co-Supervisor:</strong> Romolo Marotta</p>
                 </div>
             </div>
 
             <!-- Master Degree -->
-            <div class="education-item">
-                <div class="education-header">
-                    <h3 class="education-degree">Master Degree in Computer Science Engineering</h3>
-                    <span class="education-date">May 2018 – Oct 2021</span>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Master Degree in Computer Science Engineering</h3>
+                    <span class="timeline-date">May 2018 – Oct 2021</span>
                 </div>
-                <div class="education-institution">
+                <div class="timeline-subtitle">
                     <strong>University of Rome Tor Vergata</strong> &bull; Grade: 104/110
                 </div>
-                <div class="education-details">
+                <div class="timeline-details">
                     <p><strong>Thesis Title:</strong> <em>Studio e implementazione di uno stack sequentially consistent</em></p>
                     <p><strong>Advisor:</strong> Francesco Quaglia &bull; <strong>Co-Advisor:</strong> Romolo Marotta</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIO PAGE -->
+        <section id="content-bio" class="tab-content">
+            <h2>Research Interests</h2>
+            <div class="tag-container">
+                <span class="tag">Parallel & Distributed Systems</span>
+                <span class="tag">Parallel Discrete Event Simulation (PDES)</span>
+                <span class="tag">High-Performance Computing (HPC)</span>
+                <span class="tag">Heterogeneous Computing (CPU/GPU/FPGA)</span>
+                <span class="tag">Domain-Specific Languages (DSLs)</span>
+                <span class="tag">Shared-Memory & Multicore Architectures</span>
+            </div>
+
+            <h2>Research Experience</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Researcher (Incarico di ricerca, art. 22-ter L. 240/2010)</h3>
+                    <span class="timeline-date">Mar 2026 – Mar 2027</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>Department of Civil Engineering and Computer Science – Università Roma Tor Vergata</strong>
+                </div>
+                <div class="timeline-details">
+                    <p>Horizon Europe Project <em>EoCoE-3: Energy Oriented Centre of Excellence for Exascale</em> (Grant Agreement: 101144014)</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Scientific Collaborator</h3>
+                    <span class="timeline-date">Nov 2025 – Mar 2026</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>Department of Economics – Università Roma Tre</strong>
+                </div>
+                <div class="timeline-details">
+                    <p>PRIN 2022 Project <em>DOMAIN: Taming Heterogeneous Computing Complexity with Full-Stack Governance of Domain-Specific Languages</em> (Project Code: 2022TSYYKJ)</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Research Fellow (Assegno di ricerca, art. 22 L. 240/2010)</h3>
+                    <span class="timeline-date">Nov 2024 – Nov 2025</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>National Council of Research (CNR-IASI)</strong>
+                </div>
+                <div class="timeline-details">
+                    <p>PRIN 2022 Project <em>DOMAIN: Taming Heterogeneous Computing Complexity with Full-Stack Governance of Domain-Specific Languages</em> (Project Code: 2022TSYYKJ)</p>
+                </div>
+            </div>
+
+            <h2>National & International Research Projects</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">EoCoE-3: Energy Oriented Centre of Excellence for Exascale</h3>
+                    <span class="timeline-date">Mar 2026 – Mar 2027</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <em>Horizon Europe Grant Agreement 101144014 &bull; Università Roma Tor Vergata</em>
+                </div>
+                <div class="timeline-details">
+                    <p>Research activity within EoCoE-3 focusing on the development and optimization of HPC libraries in PSCToolkit for exascale architectures, and their integration into applications for hydrological and wind energy simulations, with emphasis on accelerator-based implementations.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">DOMAIN: Taming Heterogeneous Computing Complexity</h3>
+                    <span class="timeline-date">Nov 2024 – Mar 2026</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <em>PRIN 2022, CUP F53D23004370001 &bull; CNR-IASI / Università Roma Tre</em>
+                </div>
+                <div class="timeline-details">
+                    <p>Research on heterogeneous computing systems and domain-specific languages (DSLs), focusing on programming abstractions, runtime systems, and optimization techniques for efficient execution on hybrid architectures (CPU/GPU/FPGA).</p>
                 </div>
             </div>
         </section>
