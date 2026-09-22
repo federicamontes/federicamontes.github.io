@@ -193,6 +193,36 @@
             background-color: var(--dblp-color);
         }
 
+        /* Full CV Link Container */
+        .cv-download-container {
+            margin-bottom: 25px;
+        }
+
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .btn-cv:hover {
+            background-color: #004085;
+            transform: translateY(-2px);
+        }
+
+        .btn-cv svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
         /* Education & Experience Items */
         .timeline-item {
             background: var(--card-bg);
@@ -355,7 +385,7 @@
                     </div>
                 </div>
 
-                <!-- DBLP Button (Replaced Office) -->
+                <!-- DBLP Button -->
                 <div class="contact-card">
                     <a href="https://dblp.org/pid/322/9845.html" target="_blank" class="badge-link badge-dblp">
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -378,6 +408,17 @@
                         GitHub Profile
                     </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- BIO PAGE -->
+        <section id="content-bio" class="tab-content">
+            <!-- FULL CV DOWNLOAD LINK -->
+            <div class="cv-download-container">
+                <a href="CV_Federica_Montesano.pdf" target="_blank" class="btn-cv">
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    Download Full CV (PDF)
+                </a>
             </div>
 
             <!-- EDUCATION SECTION -->
@@ -412,25 +453,13 @@
                     <p><strong>Advisor:</strong> Francesco Quaglia &bull; <strong>Co-Advisor:</strong> Romolo Marotta</p>
                 </div>
             </div>
-        </section>
 
-        <!-- BIO PAGE -->
-        <section id="content-bio" class="tab-content">
-            <h2>Research Interests</h2>
-            <div class="tag-container">
-                <span class="tag">Parallel & Distributed Systems</span>
-                <span class="tag">Parallel Discrete Event Simulation (PDES)</span>
-                <span class="tag">High-Performance Computing (HPC)</span>
-                <span class="tag">Heterogeneous Computing (CPU/GPU/FPGA)</span>
-                <span class="tag">Domain-Specific Languages (DSLs)</span>
-                <span class="tag">Shared-Memory & Multicore Architectures</span>
-            </div>
-
+            <!-- RESEARCH EXPERIENCE SECTION -->
             <h2>Research Experience</h2>
 
             <div class="timeline-item">
                 <div class="timeline-header">
-                    <h3 class="timeline-title">Researcher (Incarico di ricerca, art. 22-ter L. 240/2010)</h3>
+                    <h3 class="timeline-title">Research Fellow (Incarico di ricerca, art. 22-ter L. 240/2010)</h3>
                     <span class="timeline-date">Mar 2026 – Mar 2027</span>
                 </div>
                 <div class="timeline-subtitle">
@@ -460,13 +489,25 @@
                     <span class="timeline-date">Nov 2024 – Nov 2025</span>
                 </div>
                 <div class="timeline-subtitle">
-                    <strong>National Council of Research (CNR-IASI)</strong>
+                    <strong>National Research Council (CNR-IASI)</strong>
                 </div>
                 <div class="timeline-details">
                     <p>PRIN 2022 Project <em>DOMAIN: Taming Heterogeneous Computing Complexity with Full-Stack Governance of Domain-Specific Languages</em> (Project Code: 2022TSYYKJ)</p>
                 </div>
             </div>
 
+            <!-- RESEARCH INTERESTS SECTION -->
+            <h2>Research Interests</h2>
+            <div class="tag-container">
+                <span class="tag">Parallel & Distributed Systems</span>
+                <span class="tag">Parallel Discrete Event Simulation (PDES)</span>
+                <span class="tag">High-Performance Computing (HPC)</span>
+                <span class="tag">Heterogeneous Computing (CPU/GPU/FPGA)</span>
+                 <span class="tag">Concurrent Data Structures</span>
+                <span class="tag">Shared-Memory & Multicore Architectures</span>
+            </div>
+
+            <!-- NATIONAL & INTERNATIONAL RESEARCH PROJECTS -->
             <h2>National & International Research Projects</h2>
 
             <div class="timeline-item">
@@ -492,6 +533,45 @@
                 </div>
                 <div class="timeline-details">
                     <p>Research on heterogeneous computing systems and domain-specific languages (DSLs), focusing on programming abstractions, runtime systems, and optimization techniques for efficient execution on hybrid architectures (CPU/GPU/FPGA).</p>
+                </div>
+            </div>
+
+            <!-- AWARDS SECTION -->
+            <h2>Awards</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Best Paper Award</h3>
+                    <span class="timeline-date">2025</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>30th IEEE International Symposium on Distributed Simulation and Real Time Applications (DS-RT)</strong>
+                </div>
+                <div class="timeline-details">
+                    <p>Award for the paper <em>"Model-Driven Parallel and Distributed Stochastic Simulation of Chemical Reaction Networks"</em></p>
+                </div>
+            </div>
+
+            <!-- CHAIRMANSHIP SECTION -->
+            <h2>Chairmanship</h2>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Reproducibility Chair</h3>
+                    <span class="timeline-date">2026</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>ACM SIGSIM Conference on Principles of Advanced Discrete Simulation (PADS)</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Reproducibility Chair</h3>
+                    <span class="timeline-date">2025</span>
+                </div>
+                <div class="timeline-subtitle">
+                    <strong>ACM SIGSIM Conference on Principles of Advanced Discrete Simulation (PADS)</strong>
                 </div>
             </div>
         </section>
