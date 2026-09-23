@@ -1,0 +1,24 @@
+1. Scrivi un programma che stampi a schermo le dimensioni in memoria dei seguenti tipi di dato: char, short, int, long, long long, float, double, long double.
+
+2. Cosa succede se applico l'operatore sizeof ad un'espressione? Scrivi un programma che dichiara e inizializza un int a e un double x, poi stampa sizeof(a), sizeof(b) e sizeof(a+b)
+
+3. Valuta le seguenti espressioni, poi scrivi un programma che stampi a schermo il risultato:
+Dati: int a, int b, int c
+- int r1 = a / b * c; 
+- int r2 = a + b % c * 3; 
+- int r3 = - a % b; 
+
+Dati: int x, y, x
+- int r4 = 3 < x < 4; 
+- int r5 = x + z == y; 
+- int r6 = !x == 0; 
+
+Dati int a, b, c, d inizializzati con 0 o 1
+- int r7 = a || b && c || d; 
+- int r8 = b > a && d == a || 1; 
+
+Dati int x, y, stampa i valori di x e y prima dell'espressione, e dopo l'espressione.
+- y = x++ + 10; 
+- int z = ++x + 10;
+- int p, q, r;
+p = q = r = 4 + 2 * 3;
