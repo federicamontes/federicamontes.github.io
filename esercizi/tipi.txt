@@ -22,3 +22,35 @@ Dati int x, y, stampa i valori di x e y prima dell'espressione, e dopo l'espress
 - int z = ++x + 10;
 - int p, q, r;
 p = q = r = 4 + 2 * 3;
+
+
+4. Scrivi un programma che, dato un intero x = 10, un double y = 3.5, calcoli l'espressione e1: sizeof(x = x + 50) e l'espressione e2: sizeof(x + y). 
+Poi stampa con printf i valori di x, e1 ed e2. Cosa ti aspetti che succeda? 
+
+5. Prevedi l'output esatto delle variabili a, b, c e voti alla fine del programma.
+#include <stdio.h>
+
+int main(void) {
+    int a = 0;
+    int b = 5;
+    int c = 10;
+    int test_count = 0;
+
+    // Espressione 1
+    int r1 = (a++ != 0) && (++test_count);
+
+    // Espressione 2
+    int r2 = (b > 2) || (++test_count);
+
+    // Espressione 3
+    int r3 = (a == 1) && (c-- > 5) && (++test_count);
+
+    printf("a = %d, b = %d, c = %d\n", a, b, c);
+    printf("test_count = %d\n", test_count);
+    printf("r1 = %d, r2 = %d, r3 = %d\n", r1, r2, r3);
+
+   return 0;
+}
+Poi, prova ad eseguirlo. 
+
+
