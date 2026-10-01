@@ -315,6 +315,59 @@
             font-size: 1.25rem;
         }
 
+        /* Clickable Course Link Style */
+        .course-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            cursor: pointer;
+        }
+
+        .course-card-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .course-card-link:hover h3 {
+            text-decoration: underline;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .arrow-indicator {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Back Button */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: #4a5568;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-back:hover {
+            background: #edf2f7;
+            color: var(--primary-color);
+        }
+
         .resource-section {
             margin-top: 18px;
         }
@@ -576,13 +629,29 @@
             </div>
         </section>
 
-        <!-- TEACHING PAGE -->
+        <!-- TEACHING LIST PAGE -->
         <section id="content-teaching" class="tab-content">
             <h2>Teaching</h2>
 
+            <!-- Clickable Course Card -->
+            <a href="javascript:void(0)" onclick="switchTab('course-ing-algoritmi')" class="course-card-link">
+                <div class="course-card">
+                    <h3>Ingegneria degli Algoritmi (Laurea Triennale)</h3>
+                    <div class="course-meta">
+                        <span>Anno Accademico 2026/2027</span>
+                        <span class="arrow-indicator">View Course Material &rarr;</span>
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        <!-- DEDICATED COURSE PAGE: Ingegneria degli Algoritmi -->
+        <section id="content-course-ing-algoritmi" class="tab-content">
+            <button class="btn-back" onclick="switchTab('teaching')">&larr; Back to Teaching</button>
+
+            <h2>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h2>
+
             <div class="course-card">
-                <h3>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h3>
-                
                 <div class="resource-section">
                     <h4>Slides</h4>
                     <ul>
@@ -605,15 +674,36 @@
     <!-- TAB SWITCHING SCRIPT -->
     <script>
         function switchTab(tabName) {
+            // Hide all tab content sections
             document.querySelectorAll('.tab-content').forEach(section => {
                 section.classList.remove('active');
             });
+
+            // Remove active class from all main navigation buttons
             document.querySelectorAll('nav button').forEach(button => {
                 button.classList.remove('active');
             });
 
-            document.getElementById('content-' + tabName).classList.add('active');
-            document.getElementById('tab-' + tabName).classList.add('active');
+            // Show selected section
+            const activeSection = document.getElementById('content-' + tabName);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // Highlight the matching navigation tab if available
+            // (If viewing a detailed course page, the "Teaching" tab remains highlighted)
+            let navTabId = 'tab-' + tabName;
+            if (tabName.startsWith('course-')) {
+                navTabId = 'tab-teaching';
+            }
+
+            const activeNavButton = document.getElementById(navTabId);
+            if (activeNavButton) {
+                activeNavButton.classList.add('active');
+            }
+
+            // Scroll smoothly back to top when switching pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 
