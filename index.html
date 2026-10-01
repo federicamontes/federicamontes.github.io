@@ -14,6 +14,8 @@
             --orcid-color: #a6ce39;
             --github-color: #24292e;
             --dblp-color: #004f9e;
+            --new-badge-bg: #e53e3e;
+            --new-badge-color: #ffffff;
         }
 
         body {
@@ -64,6 +66,7 @@
             cursor: pointer;
             border-radius: 6px;
             transition: all 0.2s ease;
+            position: relative;
         }
 
         nav button:hover {
@@ -75,6 +78,19 @@
             color: var(--primary-color);
             border-bottom: 3px solid var(--primary-color);
             margin-bottom: -5px; /* Aligns indicator with bottom border */
+        }
+
+        /* Dot indicator on navigation tab for new content */
+        nav button.has-new::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--new-badge-bg);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--bg-color);
         }
 
         /* Sections */
@@ -313,6 +329,9 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
             font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         /* Clickable Course Link Style */
@@ -369,38 +388,120 @@
         }
 
         .resource-section {
-            margin-top: 18px;
+            margin-top: 22px;
         }
 
         .resource-section h4 {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #2d3748;
             font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        ul {
-            padding-left: 20px;
-            margin-top: 5px;
+        /* Formatted Resource List */
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 8px;
         }
 
-        li {
+        .resource-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
             margin-bottom: 8px;
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: background-color 0.15s ease;
+        }
+
+        .resource-list li:hover {
+            background-color: #f1f5f9;
+        }
+
+        .resource-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .resource-title {
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        /* Action Badges */
+        .badge-pdf, .badge-file {
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            white-space: nowrap;
         }
 
         .badge-pdf {
-            font-size: 0.8rem;
             background: #ebf8ff;
             color: var(--primary-color);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-left: 8px;
-            text-decoration: none;
             border: 1px solid #bee3f8;
         }
 
         .badge-pdf:hover {
             background: #bee3f8;
+        }
+
+        .badge-file {
+            background: #f0fff4;
+            color: #276749;
+            border: 1px solid #c6f6d5;
+        }
+
+        .badge-file:hover {
+            background: #c6f6d5;
+        }
+
+        /* --- NEW SUBMISSION HIGHLIGHTING --- */
+        
+        /* Animated Pulsing NEW Badge */
+        .badge-new {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: var(--new-badge-bg);
+            color: var(--new-badge-color);
+            padding: 2px 7px;
+            border-radius: 10px;
+            display: inline-block;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0% {
+                box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 6px rgba(229, 62, 62, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(229, 62, 62, 0);
+            }
+        }
+
+        /* Special styling for newly submitted list item */
+        .resource-list li.item-new {
+            background-color: #fff5f5;
+            border-color: #feb2b2;
+        }
+
+        .resource-list li.item-new:hover {
+            background-color: #fed7d7;
         }
     </style>
 </head>
@@ -420,7 +521,8 @@
     <nav>
         <button id="tab-home" class="active" onclick="switchTab('home')">Home</button>
         <button id="tab-bio" onclick="switchTab('bio')">Bio</button>
-        <button id="tab-teaching" onclick="switchTab('teaching')">Teaching</button>
+        <!-- Added "has-new" class to show a red notification dot when there is fresh material -->
+        <button id="tab-teaching" class="has-new" onclick="switchTab('teaching')">Teaching</button>
     </nav>
 
     <main>
@@ -636,7 +738,11 @@
             <!-- Clickable Course Card -->
             <a href="javascript:void(0)" onclick="switchTab('course-ing-algoritmi')" class="course-card-link">
                 <div class="course-card">
-                    <h3>Ingegneria degli Algoritmi (Laurea Triennale)</h3>
+                    <h3>
+                        Ingegneria degli Algoritmi (Laurea Triennale)
+                        <!-- Optional NEW badge on course level -->
+                        <span class="badge-new">NEW CONTENT</span>
+                    </h3>
                     <div class="course-meta">
                         <span>Anno Accademico 2026/2027</span>
                         <span class="arrow-indicator">View Course Material &rarr;</span>
@@ -652,19 +758,54 @@
             <h2>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h2>
 
             <div class="course-card">
+                <!-- Slides Section -->
                 <div class="resource-section">
                     <h4>Slides</h4>
-                    <ul>
-                        <li>Lecture 1: Introduzione <a href="slides/lecture1.pdf" class="badge-pdf" target="_blank">PDF</a></li>
-                        <li>Lecture 2: Dati Elementari <a href="slides/lecture2.pdf" class="badge-pdf" target="_blank">PDF</a></li>
+                    <ul class="resource-list">
+                        <li>
+                            <div class="resource-info">
+                                <span class="resource-title">Lecture 1: Introduzione</span>
+                            </div>
+                            <a href="slides/lecture1.pdf" class="badge-pdf" target="_blank">PDF</a>
+                        </li>
+                        <li>
+                            <div class="resource-info">
+                                <span class="resource-title">Lecture 2: Dati Elementari</span>
+                            </div>
+                            <a href="slides/lecture2.pdf" class="badge-pdf" target="_blank">PDF</a>
+                        </li>
                     </ul>
                 </div>
 
+                <!-- Esercitazioni e Homework Section -->
                 <div class="resource-section">
                     <h4>Esercitazioni e Homework</h4>
-                    <ul>
-                        <li>Esercizi 1: Tipi di dato <a href="esercizi/tipi.txt" class="badge-pdf" target="_blank">FILE</a></li>
-                        <!-- <li>Esercitazione 1: Soluzioni <a href="exercises/sheet1_sol.pdf" class="badge-pdf" target="_blank">PDF</a></li> -->
+                    <ul class="resource-list">
+                        <!-- Standard Existing Item -->
+                        <li>
+                            <div class="resource-info">
+                                <span class="resource-title">Esercizi 1: Tipi di dato</span>
+                            </div>
+                            <a href="esercizi/tipi.txt" class="badge-file" target="_blank">FILE</a>
+                        </li>
+
+                        <!-- NEWLY SUBMITTED FILE HIGHLIGHTED -->
+                        <li class="item-new">
+                            <div class="resource-info">
+                                <span class="resource-title">Esercizi 2: Stack e Code</span>
+                                <span class="badge-new">NEW</span>
+                            </div>
+                            <a href="esercizi/stack_code.pdf" class="badge-pdf" target="_blank">PDF</a>
+                        </li>
+
+                        <!-- ANOTHER NEW FILE EXAMPLE -->
+                        <li class="item-new">
+                            <div class="resource-info">
+                                <span class="resource-title">Soluzione Esercizio 1: C Code</span>
+                                <span class="badge-new">NEW</span>
+                            </div>
+                            <a href="esercizi/soluzione1.c" class="badge-file" target="_blank">FILE</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -691,7 +832,6 @@
             }
 
             // Highlight the matching navigation tab if available
-            // (If viewing a detailed course page, the "Teaching" tab remains highlighted)
             let navTabId = 'tab-' + tabName;
             if (tabName.startsWith('course-')) {
                 navTabId = 'tab-teaching';
