@@ -463,7 +463,7 @@
         }
 
         /* Action Badges */
-        .badge-pdf, .badge-file {
+        .badge-pdf, .badge-file, .badge-zip {
             font-size: 0.8rem;
             padding: 3px 10px;
             border-radius: 4px;
@@ -491,6 +491,16 @@
 
         .badge-file:hover {
             background: #c6f6d5;
+        }
+
+        .badge-zip {
+            background: #fffaf0;
+            color: #dd6b20;
+            border: 1px solid #fbd38d;
+        }
+
+        .badge-zip:hover {
+            background: #fbd38d;
         }
 
         /* Animated Pulsing NEW Badge */
@@ -764,7 +774,6 @@
                 <div class="course-card">
                     <h3>
                         Ingegneria degli Algoritmi (Laurea Triennale)
-                        <!-- BADGE NEW SPOSTATO QUI -->
                         <span class="badge-new">NEW CONTENT</span>
                     </h3>
                     <div class="course-meta">
@@ -786,11 +795,10 @@
                 <div class="resource-section">
                     <h4>Slides</h4>
                     <ul class="resource-list">
-                        <!-- LECTURE 1 (CON BADGE NEW E RIGHE SEPARATE PER OGNI ARGOMENTO) -->
-                        <li class="item-new">
+                        <!-- LECTURE 1 -->
+                        <li>
                             <div class="resource-header">
                                 <span class="resource-title">Lecture 1</span>
-                                <span class="badge-new">NEW</span>
                             </div>
                             <div class="resource-subitems">
                                 <div class="resource-subitem">
@@ -821,6 +829,22 @@
                                     <span class="resource-title">Lecture 3 (tentative): Array</span>
                                 </div>
                                 <a href="slides/03-StruttureDati.pdf" class="badge-pdf" target="_blank">PDF</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Codici Section -->
+                <div class="resource-section">
+                    <h4>Codici</h4>
+                    <ul class="resource-list">
+                        <li class="item-new">
+                            <div class="resource-subitem" style="border:none; padding:0; background:transparent;">
+                                <div class="resource-info">
+                                    <span class="resource-title">Lecture 1: Codici di Esempio</span>
+                                    <span class="badge-new">NEW</span>
+                                </div>
+                                <a href="codes/codes-lecture1.zip" class="badge-zip" download>ZIP</a>
                             </div>
                         </li>
                     </ul>
