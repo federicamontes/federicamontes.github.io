@@ -521,8 +521,8 @@
     <nav>
         <button id="tab-home" class="active" onclick="switchTab('home')">Home</button>
         <button id="tab-bio" onclick="switchTab('bio')">Bio</button>
-        <!-- ADD "has-new" class when you put new stuff! -->
-        <button id="tab-teaching" class="" onclick="switchTab('teaching')">Teaching</button>
+        <!-- ADDED "has-new" class for new content notification -->
+        <button id="tab-teaching" class="has-new" onclick="switchTab('teaching')">Teaching</button>
     </nav>
 
     <main>
@@ -740,8 +740,8 @@
                 <div class="course-card">
                     <h3>
                         Ingegneria degli Algoritmi (Laurea Triennale)
-                        <!-- Optional NEW badge on course level UNCOMMENT THIS ON NEW CONTENT SUBMISSION-->
-                        <!-- <span class="badge-new">NEW CONTENT</span> -->
+                        <!-- ACTIVATED NEW CONTENT BADGE -->
+                        <span class="badge-new">NEW CONTENT</span>
                     </h3>
                     <div class="course-meta">
                         <span>Anno Accademico 2026/2027</span>
@@ -766,13 +766,23 @@
                             <div class="resource-info">
                                 <span class="resource-title">Lecture 1: Introduzione</span>
                             </div>
-                            <a href="slides/lecture1.pdf" class="badge-pdf" target="_blank">PDF</a>
+                            <a href="slides/01-Introduzione.pdf" class="badge-pdf" target="_blank">PDF</a>
+                            <a href="slides/02-DatiElementari.pdf" class="badge-pdf" target="_blank">PDF</a>
                         </li>
                         <li>
                             <div class="resource-info">
-                                <span class="resource-title">Lecture 2: Dati Elementari</span>
+                                <span class="resource-title">Lecture 2: Controllo del Flusso</span>
                             </div>
                             <a href="slides/lecture2.pdf" class="badge-pdf" target="_blank">PDF</a>
+                        </li>
+                        
+                        <!-- NEWLY ADDED SLIDES -->
+                        <li class="item-new">
+                            <div class="resource-info">
+                                <span class="resource-title">Lecture 3 (tentative): Array</span>
+                                <span class="badge-new">NEW</span>
+                            </div>
+                            <a href="slides/03-StruttureDati.pdf" class="badge-pdf" target="_blank">PDF</a>
                         </li>
                     </ul>
                 </div>
@@ -788,16 +798,6 @@
                             </div>
                             <a href="esercizi/tipi.txt" class="badge-file" target="_blank">FILE</a>
                         </li>
-
-                        <!-- When element is no longer new, simply remove class="item-new" -->
-                        <!-- 
-                        <li class="item-new">
-                            <div class="resource-info">
-                                <span class="resource-title">Soluzione Esercizio 1: C Code</span>
-                                <span class="badge-new">NEW</span>
-                            </div>
-                            <a href="esercizi/soluzione1.c" class="badge-file" target="_blank">FILE</a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
