@@ -1,0 +1,22 @@
+1. Scrivi un programma C che prenda in input un intero n, e calcoli e stampi l'n-esimo termine della sequenza di Fibonacci. Usa un algoritmo iterativo. 
+Scrivi anche pseudocodice, e mostra dei casi di test per il codice (esempi di input e relativo output).
+
+2. Scrivi un programma C che prenda in input un intero N e calcoli i primi N termini della serie di Fibonacci. Stampali in sequenza.
+
+3. Scrivi un programma C che prenda in input un intero N e verifichi se quel numero appartiene alla serie di Fibonacci. Ritorna true se appartiene, false altrimenti.
+Hint: ci sono due modi per effettuare questa verifica. Uno ha complessità O(N), uno ha complessità O(1). Puoi decidere di implementare quello che vuoi, a patto di saper spiegare
+differenze, eventuali assunzioni, eventuali casi limite.
+
+4. Scrivi un programma C che, dati due numeri interi positivi a e b, verifichi se a e b sono co-primi. Ritorna true se sono co-primi, false altrimenti.
+
+5. Scrivi un programma C che dati due numeri a e b stampi tutti i numeri primi compresi tra a e b.
+
+6. Scrivi un programma C che dato un numero intero positivo N, non necessariamente primo, calcoli il successivo numero primo, stampandolo.
+
+7. Crea un programma C che permetta di convertire una misura inserita dall'utente. 
+L'utente sceglie il tipo di conversione tramite un numero intero: 
+(1):Da Celsius a Fahrenheit (F = C x 9/5 + 32)
+(2):Da Chilometri a Miglia (Miglia = Km x 0.621371)
+(3):Da Chilogrammi a Libbre (Libbre = Kg x 2.20462)
+
+8. Scrivi un programma in C che calcoli e stampi tutti i fattori primi di un numero intero n preso in input. Ad esempio, se il numero è 36, l'output dovrebbe essere: 2, 2, 3, 3.
