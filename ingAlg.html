@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingegneria degli Algoritmi | Federica Montesano</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Stili aggiuntivi per le sezioni a scomparsa (Accordion) */
+        details {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: background-color 0.15s ease;
+        }
+
+        details.item-new {
+            background-color: #fff5f5;
+            border-color: #feb2b2;
+        }
+
+        summary {
+            padding: 14px 16px;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            outline: none;
+        }
+
+        summary:hover {
+            background-color: #f1f5f9;
+        }
+
+        details.item-new summary:hover {
+            background-color: #fed7d7;
+        }
+
+        /* Rimuove il triangolo di default e personalizza lo spazio dei contenuti interni */
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .details-content {
+            padding: 0 16px 16px 16px;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
+            margin-top: 4px;
+        }
+
+        details.item-new .details-content {
+            border-top-color: #feb2b2;
+        }
+
+        .lecture-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,16 +87,20 @@
         <h2>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h2>
 
         <div class="course-card">
-            <!-- MACRO SEZIONE: LECTURES (Slides & Codici accorpati) -->
+            <!-- MACRO SEZIONE: LECTURES (Con sezioni a scomparsa) -->
             <div class="resource-section">
                 <h4>Lectures</h4>
-                <ul class="resource-list">
-                    <!-- LECTURE 1 -->
-                    <li>
-                        <div class="resource-header">
-                            <span class="resource-title">Lecture 1: Introduzione e Tipi di dato</span>
-                        </div>
-                        <div class="resource-subitems">
+                
+                <!-- LECTURE 1 (Aperta di default o chiusa a scelta) -->
+                <details open>
+                    <summary>
+                        <span class="lecture-header-info">
+                            <span>Lecture 1: Introduzione e Tipi di dato</span>
+                        </span>
+                        <span style="font-size: 0.85rem; color: var(--primary-color);">▼</span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="resource-subitems" style="margin-top: 10px;">
                             <div class="resource-subitem">
                                 <span class="sub-title">Slides: Introduzione</span>
                                 <a href="slides/01-Introduzione.pdf" class="badge-pdf" target="_blank">PDF</a>
@@ -52,14 +114,19 @@
                                 <a href="codes/codes-lecture1.zip" class="badge-zip" download>ZIP</a>
                             </div>
                         </div>
-                    </li>
+                    </div>
+                </details>
 
-                    <!-- LECTURE 2 -->
-                    <li>
-                        <div class="resource-header">
-                            <span class="resource-title">Lecture 2: Controllo del Flusso e Scope</span>
-                        </div>
-                        <div class="resource-subitems">
+                <!-- LECTURE 2 -->
+                <details>
+                    <summary>
+                        <span class="lecture-header-info">
+                            <span>Lecture 2: Controllo del Flusso e Scope</span>
+                        </span>
+                        <span style="font-size: 0.85rem; color: var(--primary-color);">▼</span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="resource-subitems" style="margin-top: 10px;">
                             <div class="resource-subitem">
                                 <span class="sub-title">Slides: Controllo del Flusso e Scope</span>
                                 <a href="slides/03-Controllo.pdf" class="badge-pdf" target="_blank">PDF</a>
@@ -73,15 +140,20 @@
                                 <a href="codes/ottimizzazioni.zip" class="badge-zip" download>ZIP</a>
                             </div>
                         </div>
-                    </li>
+                    </div>
+                </details>
 
-                    <!-- LECTURE 3: ARRAY (NEW) -->
-                    <li class="item-new">
-                        <div class="resource-header">
-                            <span class="resource-title">Lecture 3: Array</span>
+                <!-- LECTURE 3: ARRAY (NEW - Aperta di default perché è nuova) -->
+                <details class="item-new" open>
+                    <summary>
+                        <span class="lecture-header-info">
+                            <span>Lecture 3: Array</span>
                             <span class="badge-new">NEW</span>
-                        </div>
-                        <div class="resource-subitems">
+                        </span>
+                        <span style="font-size: 0.85rem; color: var(--primary-color);">▼</span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="resource-subitems" style="margin-top: 10px;">
                             <div class="resource-subitem">
                                 <span class="sub-title">Slides: Array e Strutture Dati</span>
                                 <span class="badge-new">NEW</span>
@@ -98,62 +170,67 @@
                                 <a href="codes/multifile-extern.zip" class="badge-zip" download>ZIP</a>
                             </div>
                         </div>
-                    </li>
+                    </div>
+                </details>
 
-                    <!-- LECTURE 4: PUNTATORI (VUOTA) -->
-                    <li>
-                        <div class="resource-subitem" style="border:none; padding:0; background:transparent;">
-                            <div class="resource-info">
-                                <span class="resource-title">Lecture 4: Puntatori</span>
-                            </div>
-                            <span style="font-size: 0.85rem; color: #718096; font-style: italic;">Coming soon</span>
+                <!-- LECTURE 4: PUNTATORI (VUOTA) -->
+                <details>
+                    <summary>
+                        <span class="lecture-header-info">
+                            <span>Lecture 4: Puntatori</span>
+                        </span>
+                        <span style="font-size: 0.85rem; color: #718096; font-style: italic;">Coming soon</span>
+                    </summary>
+                    <div class="details-content">
+                        <div style="padding: 8px 0; font-size: 0.95rem; color: #718096; font-style: italic;">
+                            Contenuti in fase di caricamento...
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </details>
             </div>
 
-            <!-- SEZIONE SEPARATA: Esercitazioni e Homework -->
+            <!-- SEZIONE SEPARATA: Esercitazioni e Homework (Anche qui applicato l'accordion per coerenza) -->
             <div class="resource-section">
                 <h4>Esercitazioni e Homework</h4>
-                <ul class="resource-list">
-                    <li>
-                        <div class="resource-subitem" style="border:none; padding:0; background:transparent;">
-                            <div class="resource-info">
-                                <span class="resource-title">Esercizi 1: Tipi di dato</span>
-                            </div>
-                            <a href="esercizi/tipi.txt" class="badge-file" target="_blank">FILE</a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="resource-subitem" style="border:none; padding:0; background:transparent;">
-                            <div class="resource-info">
-                                <span class="resource-title">Homework 1: Controllo del Flusso</span>
-                            </div>
-                            <a href="esercizi/esercizi1.txt" class="badge-file" target="_blank">FILE</a>
-                        </div>
-                    </li>
-
-                    <!-- HOMEWORK 2: ARRAY (NEW) -->
-                    <li class="item-new">
-                        <div class="resource-header">
-                            <span class="resource-title">Homework 2: Array</span>
-                            <span class="badge-new">NEW</span>
-                        </div>
-                        <div class="resource-subitems">
+                
+                <details open>
+                    <summary>
+                        <span class="lecture-header-info">
+                            <span>Raccolta Esercizi e Homework</span>
+                        </span>
+                        <span style="font-size: 0.85rem; color: var(--primary-color);">▼</span>
+                    </summary>
+                    <div class="details-content">
+                        <div class="resource-subitems" style="margin-top: 10px;">
                             <div class="resource-subitem">
-                                <span class="sub-title">Esercizi Array 1</span>
-                                <span class="badge-new">NEW</span>
+                                <span class="sub-title">Esercizi 1: Tipi di dato</span>
+                                <a href="esercizi/tipi.txt" class="badge-file" target="_blank">FILE</a>
+                            </div>
+
+                            <div class="resource-subitem">
+                                <span class="sub-title">Homework 1: Controllo del Flusso</span>
+                                <a href="esercizi/esercizi1.txt" class="badge-file" target="_blank">FILE</a>
+                            </div>
+
+                            <!-- HOMEWORK 2: ARRAY (NEW) -->
+                            <div class="resource-subitem" style="background-color: #fff5f5; border-color: #feb2b2;">
+                                <div class="resource-info">
+                                    <span class="sub-title">Homework 2: Esercizi Array 1</span>
+                                    <span class="badge-new">NEW</span>
+                                </div>
                                 <a href="esercizi/esercizi-array1.txt" class="badge-file" target="_blank">FILE</a>
                             </div>
-                            <div class="resource-subitem">
-                                <span class="sub-title">Esercizi Array 2</span>
-                                <span class="badge-new">NEW</span>
+
+                            <div class="resource-subitem" style="background-color: #fff5f5; border-color: #feb2b2;">
+                                <div class="resource-info">
+                                    <span class="sub-title">Homework 2: Esercizi Array 2</span>
+                                    <span class="badge-new">NEW</span>
+                                </div>
                                 <a href="esercizi/esercizi-array2.txt" class="badge-file" target="_blank">FILE</a>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </details>
             </div>
         </div>
     </main>
