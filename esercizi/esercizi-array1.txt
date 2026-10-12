@@ -1,0 +1,43 @@
+Esercizio 1: Scrivi una funzione int contaOccorrenze(int v[], int n, int valore) che riceve un array, la sua dimensione e un valore intero da cercare. La funzione deve restituire quante volte quel valore compare nell'array
+
+Qual è la complessità algoritmica?
+C'è un modo più veloce di contare le occorrenze di un numero in un array? Se sì, spiega l'algoritmo mostrando anche solamente pseudocodice.
+
+Esercizio 2: Scrivi una funzione int isOrdered(int v[], int n) che restituisce 1 se l'array è ordinato in modo crescente, 0 altrimenti.
+
+Qual è la complessità algoritmica?
+
+Esercizio 3: Scrivi una funzione void ruotaDestra(int v[], int n) che sposta tutti gli elementi dell'array a destra di una posizione. L'ultimo elemento deve diventare il primo.
+Esempio: {1, 2, 3, 4, 5} diventa {5, 1, 2, 3, 4}.
+
+Qual è la complessità algoritmica?
+Alternativa: se volessi fare una rotazione di K posizioni, anziché 1 sola, come cambierebbe l'algoritmo? Descrivi una delle possibili soluzioni indicando pro e contro rispetto all'algoritmo migliore.
+
+Esercizio 4: Scrivi una funzione int estraiPari(int sorgente[], int n_sorgente, int destinazione[]) che copia solo i numeri pari da sorgente a destinazione. 
+La funzione deve restituire il numero effettivo di elementi pari trovati e copiati.
+
+Esercizio 5: Scrivi due funzioni:
+        void sommaRighe(int r, int c, int mat[r][c], int res[]): calcola la somma degli elementi di ciascuna riga e memorizza i risultati nell'array res (di dimensione r).
+        void sommaColonne(int r, int c, int mat[r][c], int res[]): analogo per le colonne (memorizza in res di dimensione c).
+
+
+Esercizio 6: Ricerca Binaria (Binary Search)
+Concetto Algoritmico: Tecnica del Divide et Impera, complessità O(logn)
+Scrivi la funzione int ricercaBinaria(int v[], int n, int target) che cerca il valore target all'interno di un array v di dimensione n, assunto già ordinato in modo crescente.
+La funzione deve restituire l'indice in cui si trova l'elemento, oppure -1 se il valore non è presente nell'array.
+
+Perché la complessità è O(logn)?
+Che succede se nell'array ci sono elementi duplicati e in particolare se target è un elemento con più occorrenze nell'array?
+Questa procedura è naturalmente ricorsiva, cosa succede se utilizzo un algoritmo iterativo invece di un algoritmo ricorsivo? La complessità cambia?
+
+Esercizio 7: Dato un array v di interi ordinato in modo crescente, scrivi una funzione int rimuoviDuplicati(int v[], int n) che sovrascriva i 
+duplicati in-place spostando gli elementi unici nella prima parte dell'array. La funzione restituisce la nuova lunghezza K dell'array contenente solo valori distinti.
+Prerequisito: l'array si assume ordinato in senso crescente.
+
+Esercizio 8: Dato un array v di interi (che può contenere anche numeri negativi), trova la somma contigua massima di un sottoarray. 
+Scrivi la funzione int maxSubarraySum(int v[], int n).
+
+Qual è la complessità algoritmica? L'algoritmo più efficiente che complessità ha?
+
+
+

@@ -1,0 +1,17 @@
+1. Scrivi un programma per calcolare la somma di tutti i numeri pari e la somma di tutti i numeri dispari memorizzati in un array di interi di dimensione 10. 
+Acquisisci i valori dell'array dall'utente usando la funzione scanf.
+
+2. Scrivi un programma per ordinare gli elementi di un array di interi di dimensione 10 in ordine crescente. Acquisisci i valori dell'array dall'utente con la funzione scanf.
+Descrivi che algoritmo hai utilizzato e qual è la sua complessità.
+
+3. Scrivi un programma per trovare il secondo numero più grande in un array di interi. Acquisisci i valori dell'array dall'utente con la funzione scanf.
+
+4. Scrivi una funzione per contare il numero totale di elementi duplicati in un array (elementi che compaiono esattamente due volte).
+
+5. Scrivi una funzione per unire due array della stessa dimensione e ordinare l'array risultante in ordine decrescente.
+
+6. Scrivi un programma per calcolare la lunghezza della stringa SENZA usare funzioni integrate (strlen).
+
+7. Scrivi un programma per contare le occorrenze di un dato carattere in una data stringa.
+
+8. Scrivi un programma in C per copiare una stringa in un' altra stringa ( array di caratteri.)
