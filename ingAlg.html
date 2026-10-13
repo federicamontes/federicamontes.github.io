@@ -62,6 +62,32 @@
             align-items: center;
             gap: 10px;
         }
+
+        /* Stile per il box comunicazioni */
+        .announcement-box {
+            background-color: #fffaf0;
+            border: 1px solid #fbd38d;
+            border-left: 4px solid #dd6b20;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #7b341e;
+        }
+
+        .announcement-box h4 {
+            margin: 0 0 6px 0;
+            color: #c05621;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .announcement-box p {
+            margin: 0;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -85,6 +111,12 @@
         <a href="teaching.html" class="btn-back">&larr; Back to Teaching</a>
 
         <h2>Ingegneria degli Algoritmi (Laurea Triennale) — A.A. 2026/2027</h2>
+
+        <!-- SEZIONE COMUNICAZIONI -->
+        <div class="announcement-box">
+            <h4>📢 Comunicazioni</h4>
+            <p><strong>Avviso del 13 Ottobre 2026:</strong> Si avvisano gli studenti che il turno di tutoraggio previsto oggi alle ore 16:00 <strong>non verrà effettuato</strong> a causa di una sovrapposizione di orari con il corso di Calcolatori Elettronici.</p>
+        </div>
 
         <div class="course-card">
             <!-- MACRO SEZIONE: LECTURES -->
@@ -233,7 +265,7 @@
                 </details>
             </div>
 
-            <!-- NUOVA SEZIONE: Further Reading / Supplementary Materials -->
+            <!-- SEZIONE: Further Reading / Supplementary Materials -->
             <div class="resource-section">
                 <h4>Further Reading / Supplementary Materials</h4>
                 
@@ -249,7 +281,7 @@
                         <div class="resource-subitems" style="margin-top: 10px;">
                             <div class="resource-subitem" style="background-color: #fff5f5; border-color: #feb2b2;">
                                 <div class="resource-info">
-                                    <span class="sub-title">Input stringhe, Input parametri da main(), Gestione errori</span>
+                                    <span class="sub-title">Approfondimento 1</span>
                                     <span class="badge-new">NEW</span>
                                 </div>
                                 <a href="suppl/approfondimento1.zip" class="badge-zip" download>ZIP</a>
