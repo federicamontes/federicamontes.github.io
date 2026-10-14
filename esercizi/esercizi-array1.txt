@@ -11,7 +11,8 @@ Esercizio 3: Scrivi una funzione void ruotaDestra(int v[], int n) che sposta tut
 Esempio: {1, 2, 3, 4, 5} diventa {5, 1, 2, 3, 4}.
 
 Qual è la complessità algoritmica?
-Alternativa: se volessi fare una rotazione di K posizioni, anziché 1 sola, come cambierebbe l'algoritmo? Descrivi una delle possibili soluzioni indicando pro e contro rispetto all'algoritmo migliore.
+Alternativa: se volessi fare una rotazione di K posizioni, anziché 1 sola, come cambierebbe l'algoritmo? 
+Descrivi una delle possibili soluzioni in pseudocodice. Hint: la soluzione più intuitiva e richiede tempo O(K x n), anche se non è l'algoritmo migliore..
 
 Esercizio 4: Scrivi una funzione int estraiPari(int sorgente[], int n_sorgente, int destinazione[]) che copia solo i numeri pari da sorgente a destinazione. 
 La funzione deve restituire il numero effettivo di elementi pari trovati e copiati.
