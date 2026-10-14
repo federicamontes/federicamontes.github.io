@@ -1,0 +1,20 @@
+1. Scrivi un programma che dichiari due variabili intere a e b con valori iniziali diversi. 
+Implementa una funzione void swap(int *x, int *y) che riceva gli indirizzi delle due variabili e ne scambi i contenuti. 
+Stampa i valori nel main prima e dopo la chiamata per verificare che siano effettivamente cambiati.
+
+2. Scrivi un programma che dichiari una variabile float e un puntatore che la punta. Tramite il solo puntatore (senza mai usare direttamente il nome della variabile originaria):
+- Assegna un valore alla variabile.
+- Modifica quel valore aggiungendo 10.5.
+- Stampa sia il valore finale che l'indirizzo di memoria in cui è salvato.
+
+3. Scrivi un programma che crei un array statico di 10 interi inseriti dall'utente. 
+Utilizzando esclusivamente l'aritmetica dei puntatori (vietato l'uso della notazione array[i]), 
+scrivi una funzione che scorra l'array dall'ultimo elemento al primo e stampane i valori a schermo (printf()).
+
+4. Scrivi un programma che chieda all'utente quanti elementi desidera memorizzare in un array tramite scanf(), poi alloca dinamicamente un array
+e inizializzane tutti i valori utilizzando scanf().
+
+5. Scrivi un programma che crei una matrice dinamica di dimensioni scelte dall'utente tramite scanf() (es. righe e colonne).
+Alloca un array di puntatori (int **matrice) per le righe, per ogni riga, alloca dinamicamente lo spazio per le colonne.
+Riempi la matrice con valori progressivi, stampane i valori e infine dealloca correttamente tutta la memoria a cascata 
+(prima le righe singole, poi l'array di puntatori) per evitare memory leak.
