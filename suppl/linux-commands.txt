@@ -1,0 +1,217 @@
+======================================================================
+
+GUIDA AI COMANDI LINUX PRINCIPALI PER IL TERMINALE
+
+======================================================================
+
+
+
+1. GESTIONE DEI FILE E DELLE DIRECTORY
+
+----------------------------------------------------------------------
+
+- `ls -la <nome_file>` o `ls -la`:
+
+  Mostra l'elenco dettagliato di tutti i file (inclusi quelli nascosti 
+
+  che iniziano con il punto) e delle directory presenti, indicando 
+
+  permessi, proprietario, dimensione e data di ultima modifica. Se 
+
+  eseguito su una specifica cartella, mostra il contenuto di quest'ultima.
+
+
+
+- `cd <nome_cartella>`:
+
+  Permette di "entrare" (spostarsi) all'interno della cartella selezionata.
+
+  (Usa `cd ..` per tornare alla cartella superiore).
+
+
+
+- `mkdir <nome_directory>`:
+
+  Crea una nuova cartella vuota all’interno della cartella corrente.
+
+
+
+- `chown`:
+
+  Permette di cambiare il proprietario (e/o il gruppo di appartenenza) 
+
+  di un file o di una directory.
+
+
+
+- `chmod`:
+
+  Permette di modificare i permessi di accesso (lettura, scrittura, 
+
+  esecuzione) di un file o di una directory.
+
+
+
+
+
+2. REDIREZIONE DI INPUT E OUTPUT (REDIRECTION)
+
+----------------------------------------------------------------------
+
+I flussi di input e output di un programma possono essere redirezionati 
+
+rispetto allo standard (schermo e tastiera), consentendo di salvare i 
+
+risultati su file o di usare file come sorgenti dati.
+
+
+
+- `A > B`:
+
+  Redirige l'output generato dal programma/comando `A` verso il file `B`. 
+
+  Se il file `B` non esiste, viene creato; se esiste, il suo contenuto 
+
+  viene sovrascritto.
+
+  Esempio: `echo "password" > file.txt`
+
+
+
+- `A < B`:
+
+  Redirige l'input del programma `A` prelevandolo dal file `B` anziché 
+
+  dalla tastiera.
+
+
+
+- `>>` (Operatore di append):
+
+  Simile a `>`, ma aggiunge l'output in fondo al file `B` senza sovrascriverne 
+
+  il contenuto esistente.
+
+  Esempio: `cat file_part_1.txt file_part_2.txt > file.txt`
+
+
+
+
+
+3. VISUALIZZAZIONE E MODIFICA DEI FILE
+
+----------------------------------------------------------------------
+
+- `cat <file1> <file2> ... <fileN>`:
+
+  Concatena e stampa a schermo i file passati in input. Viene comunemente 
+
+  usato anche per visualizzare rapidamente il contenuto di un singolo file.
+
+
+
+- `head <file>`:
+
+  Permette di visualizzare le prime righe di un file (di default le prime 10).
+
+
+
+- `tail <file>`:
+
+  Permette di visualizzare le ultime righe di un file (molto utile, ad 
+
+  esempio, per monitorare i file di log in tempo reale).
+
+
+
+- `vim <file>`:
+
+  Apre il text editor Vim (se installato) direttamente nel terminale 
+
+  per creare o modificare il file.
+
+
+
+- `grep -e <pattern> <file>`:
+
+  Cerca una specifica stringa o pattern all’interno di un file. Può essere 
+
+  utilizzato anche per ricerche avanzate su molteplici file.
+
+
+
+- `echo <stringa>`:
+
+  Stampa a schermo (sul terminale) la stringa di testo passata come argomento. 
+
+  Spesso usato per stampare variabili o scrivere output all'interno di file.
+
+
+
+
+
+4. INFORMAZIONI SUL SISTEMA E UTENTE
+
+----------------------------------------------------------------------
+
+- `whoami`:
+
+  Mostra il nome dell'utente con cui si è attualmente loggati nel terminale.
+
+
+
+- `which <comando>`:
+
+  Restituisce il percorso assoluto (path) in cui si trova l'eseguibile 
+
+  del comando specificato.
+
+
+
+- `lscpu`:
+
+  Restituisce informazioni dettagliate sul processore (CPU) del sistema.
+
+
+
+- `lsblk`:
+
+  Mostra i block device (dischi rigidi, partizioni, memorie USB) e il 
+
+  loro stato di collegamento e utilizzo.
+
+
+
+- `clear`:
+
+  Pulisce lo schermo del terminale (tty).
+
+
+
+
+
+5. GESTIONE DEI PROCESSI
+
+----------------------------------------------------------------------
+
+- `ps` o `ps -aux`:
+
+  Mostra un'istantanea dei processi attivi in quel momento nel sistema, 
+
+  inclusi i loro ID (PID) e l'utilizzo delle risorse.
+
+
+
+- `top` o `htop`:
+
+  Avvia un monitoraggio interattivo in tempo reale dei processi e dei 
+
+  thread in esecuzione nel sistema.
+
+
+
+- `kill -9 <pid>` o `pkill -9 <nome_processo>`:
+
+  Invia un segnale di terminazione forzata (segnale 9 / SIGKILL) a uno 
+
+  specifico processo tramite il suo ID numerico (PID) o tramite il suo nome.
