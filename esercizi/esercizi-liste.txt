@@ -1,0 +1,177 @@
+Gli esercizi con * son considerati più difficili.
+
+PRELIMINARI:
+
+0. Si implementi la funzione: void reverse(Node** head); presente nel pacchetto singly-linked-list.c mostrato a lezione.
+La funzione deve invertire l'ordine dei nodi di una lista semplicemente collegata in-place, ovvero senza allocare nuovi nodi in memoria 
+e senza duplicare i dati esistenti. La testa della lista (head) deve essere aggiornata correttamente per puntare al 
+nuovo primo elemento (che in origine era l'ultimo).
+
+0.1. Si implementi la funzione void insertOrdered(Node **head, Node *newNode); presente nel pacchetto singly-linked-list.c mostrato a lezione.
+La funzione deve inserire un nuovo nodo (newNode) all'interno di una lista semplicemente collegata 
+che mantiene già un ordinamento crescente basato sul campo data.
+La ricerca del punto di inserimento deve essere effettuata utilizzando un puntatore a puntatore (Node **prec), 
+e l'inserimento finale deve riutilizzare la funzione generica insert(Node **prec, Node *newNode) vista a lezione.
+
+0.2. Implementare l'Abstract Data Type (ADT) Stack (Pila) sfruttando la struttura delle liste semplicemente collegate. 
+Lo Stack deve seguire rigorosamente la politica LIFO (Last In, First Out).
+La definizione della struttura è:
+typedef struct StackNode {
+    int data;
+    struct StackNode* next;
+} StackNode;
+
+Specifiche delle operazioni richieste:
+- void push(StackNode** top, int data); Inserisce un nuovo elemento in cima allo Stack
+- int pop(StackNode** top); Rimuove e restituisce l'elemento attualmente in cima allo Stack
+- int peek(StackNode* top); oppure int top(StackNode* top); Restituisce il valore dell'elemento in cima allo Stack senza rimuoverlo
+- bool isEmpty(StackNode* top); Restiuisce true se lo stack è vuoto, false altrimenti
+- StackNode* createStackNode(int data); Crea la struttura StackNode e ritorna il puntatore
+- void freeStack(StackNode** top); Libera la memoria dello stack
+
+
+0.3 Implementare l'Abstract Data Type (ADT) Queue (Coda) utilizzando i nodi di una lista semplicemente collegata. 
+La Coda deve seguire rigorosamente la politica FIFO (First In, First Out).
+La definizione delle strutture è:
+// Nodo della coda
+typedef struct QNode {
+    int data;
+    struct QNode* next;
+} QNode;
+
+// Struttura di controllo della Coda con i campi front e tail
+typedef struct Queue {
+    QNode* front;
+    QNode* tail;
+} Queue;
+
+Specifiche delle operazioni richieste:
+- void enqueue(Queue* q, int value); Inserisce un nuovo elemento in fondo (in coda) alla struttura.
+- int dequeue(Queue* q); Rimuove e restituisce il primo elemento della Coda (quello inserito per primo).
+- int first(Queue* q); Restituisce il valore del primo elemento della Coda senza rimuoverlo.
+- bool isEmpty(Queue* q); Restituisce true se la coda è vuota, false altrimenti
+- Queue* createQueue(); Crea la struttura Queue e i suoi nodi iniziali Qnode* e ritorna il puntatore a Queue
+- void freeQueue(Queue* q); Libera la memoria della coda
+
+
+----------------------------------------------------
+
+1. Estendere il concetto di lista semplicemente collegata introducendo la struttura a Lista Circolare, 
+in cui il campo next dell'ultimo nodo non punta a NULL, ma si richiude ciclicamente puntando direttamente alla testa (head) della lista.
+Specifiche:
+- Struttura del Nodo: Utilizzare la classica struttura del nodo (Node) con un campo data e un puntatore next.
+- Inserimento (insert o insertAfter): Implementare una funzione di inserimento (in testa o in coda) garantendo che la circolarità della lista 
+venga sempre preservata (l'ultimo nodo deve sempre puntare alla testa).
+- Attenzione alla funzione di stampa e in generale a come scorrere la lista! Non si scorre come la singly linked list..
+- Cancellazione di un nodo: Gestire la rimozione di un nodo aggiornando correttamente i collegamenti, 
+facendo attenzione al caso in cui si elimini l'unico elemento rimasto o il nodo di testa in una struttura circolare.
+
+2. Scrivi una funzione in linguaggio C che riceva in input la testa (head) di una lista semplicemente collegata e stampi l'elemento che si trova esattamente a metà della lista.
+Nota: Se il numero di nodi è dispari, stampa l'unico elemento centrale; se il numero di nodi è pari, stampa il secondo dei due elementi centrali.
+Qual è la complessità nel caso peggiore (worst-case) della tua soluzione?
+
+3. Scrivi una funzione in linguaggio C per rimuovere tutti i nodi duplicati da una lista semplicemente collegata non ordinata. 
+La funzione deve mantenere soltanto la prima occorrenza di ciascun valore e liberare correttamente la memoria dei nodi rimossi tramite free().
+Input (Lista iniziale):
+12 -> 11 -> 12 -> 21 -> 41 -> 11 -> 21 -> NULL
+
+Output atteso (Dopo la rimozione dei duplicati):
+12 -> 11 -> 21 -> 41 -> NULL
+
+Qual è la complessità temporale nel caso peggiore (worst-case) della soluzione che hai implementato?
+
+4. Scrivi una funzione in linguaggio C per rimuovere i nodi duplicati da una lista semplicemente collegata che è già stata ordinata in precedenza. 
+Ciascun elemento deve comparire esattamente una sola volta; i nodi in eccesso devono essere deallocati correttamente dalla memoria.
+Input (Lista iniziale ordinata):
+10 -> 20 -> 20 -> 30 -> 40 -> 40 -> 40 -> 50 -> NULL
+
+Output atteso (Dopo la rimozione dei duplicati):
+10 -> 20 -> 30 -> 40 -> 50 -> NULL
+
+Qual è la complessità temporale nel caso peggiore (worst-case) di questo algoritmo e perché è più efficiente rispetto al caso della lista non ordinata?
+
+5. Scrivi una funzione in linguaggio C che prenda in input la testa (head) di una lista semplicemente collegata e scambi gli elementi a coppie 
+(cioè scambia il 1° con il 2°, il 3° con il 4°, e così via) modificando i puntatori (senza semplicemente scambiare i valori dentro i nodi). Restituisci la nuova testa della lista.
+Input (Lista iniziale): 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL
+
+Output atteso: 2 -> 1 -> 4 -> 3 -> 6 -> 5 -> NULL
+
+Qual è la complessità temporale nel caso peggiore (worst-case) della tua soluzione?
+
+6*. Scrivi una funzione in linguaggio C che prenda in input le teste (head1 e head2) di due liste semplicemente collegate e già ordinate in ordine crescente. 
+La funzione deve costruire e restituire una nuova lista collegata che contenga tutti gli elementi comuni (l'intersezione).
+Gestione dei duplicati: Se un elemento è presente più volte in entrambe le liste, deve comparire nella lista intersezione tante volte 
+quanto è il minor numero di ripetizioni comuni in entrambe le liste.
+Invariabilità: Le due liste originali non devono essere modificate in alcun modo.
+
+Input (Lista 1): 1 -> 2 -> 2 -> 3 -> 4 -> 6 -> NULL
+Input (Lista 2): 2 -> 2 -> 4 -> 6 -> 6 -> 8 -> NULL
+
+Output atteso (Nuova lista intersezione): 2 -> 2 -> 4 -> 6 -> NULL
+(Spiegazione: il 2 compare due volte in entrambe, il 4 una volta, il 6 compare una sola volta nell'intersezione perché nella Lista 1 ce n'è solo uno, 
+mentre il 3, l'1 e l'8 vengono esclusi).
+
+Qual è la complessità temporale e spaziale nel caso peggiore (worst-case) di questo algoritmo, sfruttando il fatto che le liste di partenza sono già ordinate?
+
+7. Data una lista doppiamente collegata, scrivi una funzione in linguaggio C per ruotare la lista in senso antiorario di p nodi, dove p è un numero intero positivo dato 
+ed è strettamente minore del numero totale di nodi presenti nella lista.
+
+Input (Lista iniziale, con p = 2):
+NULL <-> a <-> b <-> c <-> d <-> e <-> NULL
+Output atteso (Dopo la rotazione antioraria di 2 posizioni):
+NULL <-> c <-> d <-> e <-> a <-> b <-> NULL
+
+Spiegazione: i primi 2 nodi a e b sono stati spostati in fondo alla lista in ordine, facendo diventare c la nuova testa.
+
+Qual è la complessità temporale e spaziale nel caso peggiore (worst-case) della tua soluzione?
+
+8. Data una lista collegata, scrivi una funzione C per spostare tutti i nodi con valore zero all'inizio della lista. 
+L'ordine relativo di tutti gli altri elementi (diversi da zero) deve rimanere esattamente lo stesso dopo il riordinamento.
+
+Esempio 1:
+Input: 0 -> 1-> 0-> 1-> 2-> 0-> 5-> 0-> 4-> 0
+Output atteso: 0-> 0-> 0-> 0-> 0-> 1-> 1-> 2-> 5-> 4
+
+Esempio 2:
+Input: 1-> 1-> 2-> 3-> 0-> 0-> 0->
+Output atteso: 0 0 0 1 1 2 3
+
+Qual è la complessità temporale e spaziale nel caso peggiore (worst-case) della tua soluzione? 
+
+
+9*. Data una lista collegata, scrivi una funzione C che ordini la lista in senso crescente. L'ordinamento si può fare in tempo O(N^2) e O(NlogN). Discuti e implementa la soluzione con entrambi 
+gli algoritmi. Implementa un algoritmo di ordinamento quadratico (come il Selection Sort o l'Insertion Sort modificato per le liste), operando direttamente sui puntatori.
+Implementa il Merge Sort, sfruttando la divisione della lista a metà e una funzione di supporto merge per fondere le due parti.
+
+Hint: pensa a come funziona l'ordinamento su un array, nel caso dei due algoritmi O(N^2) e O(NlogN). 
+- Pensa a come sposti o riagganci i puntatori next senza dover per forza accedere agli elementi tramite indice numerico ([]). 
+Puoi aiutarti isolando un sottoinsieme di nodi già ordinati e inserendo i successivi uno alla volta nella posizione corretta.
+- Ricordati il paradigma Divide et Impera. Per applicarlo a una lista collegata:
+Divide: Come puoi trovare il punto di mezzo di una lista senza calcolarne prima la lunghezza esatta?
+Impera: Sfrutta la ricorsione per spezzare la lista in metà sempre più piccole fino a singoli nodi.
+Combina (Merge): Scrivi una funzione di supporto che prenda due liste già ordinate e le fonda in un'unica lista ordinata, 
+manipolando unicamente i puntatori next (senza sprecare memoria extra per array di supporto).
+
+10*. Data la testa (head) di una lista semplicemente collegata che potrebbe contenere un ciclo (ovvero una situazione in cui l'ultimo nodo, 
+anziché puntare a NULL, punta all'indietro verso un nodo precedente della stessa lista), scrivi una funzione in linguaggio C che:
+Verifichi se nella lista è presente un ciclo.
+Se il ciclo esiste, lo rimuova interrompendo il legame circolare (ripristinando il puntatore next dell'ultimo nodo a NULL), in modo da restituire una lista lineare standard valida.
+Se il ciclo non è presente, lasci la lista inalterata.
+
+Hint per la rilevazione del ciclo: fai partire due puntatori dallo stesso head, ma fai muovere il primo (slow) di un passo alla volta e il secondo (fast) di due passi alla volta. 
+Se la lista è lineare, fast arriverà a NULL; se c'è un ciclo, i due puntatori finiranno inevitabilmente per scontrarsi nello stesso nodo.
+
+Qual è la complessità temporale e spaziale nel caso peggiore (worst-case) della tua soluzione?
+
+11*. Date le teste (head1 e head2) di due liste semplicemente collegate, scrivi una funzione in linguaggio C che crei e restituisca una nuova lista collegata contenente 
+l'unione (insiemistica) degli elementi presenti in entrambe le liste.
+Nessun duplicato: Ciascun elemento deve comparire esattamente una sola volta nella lista risultante.
+Ordine specifico degli elementi:
+- Includi tutti gli elementi della prima lista, nell'esatto ordine in cui compaiono originariamente. 
+- Includi gli elementi della seconda lista che non erano già stati inseriti in precedenza, mantenendo anche per essi il loro ordine originale.
+Invariabilità: Le liste originali non devono essere modificate; la nuova lista deve essere costruita allocando nuovi nodi (tramite malloc).
+
+Input (Lista 1): 10 -> 15 -> 4 -> 20 -> NULL
+Input (Lista 2): 8 -> 4 -> 2 -> 10 -> NULL
+Output atteso (Nuova lista unione): 10 -> 15 -> 4 -> 20 -> 8 -> 2 -> NULL
+
