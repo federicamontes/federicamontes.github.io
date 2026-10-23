@@ -1,0 +1,210 @@
+1. Dato un array arr[] di dimensione n, scrivi una funzione in linguaggio C che inverta l'ordine degli elementi dell'array utilizzando una struttura dati Stack.
+Hint: Sfrutta la natura LIFO (Last-In, First-Out) dello stack. Inserisci tutti gli elementi dell'array nello stack uno alla volta (operazione di push), 
+e successivamente prelevali dallo stack (operazione di pop) reinserendoli nell'array: l'ultimo elemento inserito sarà il primo a uscire, invertendo così la sequenza originale.
+
+2. Si consideri una sequenza di n parole (stringhe) memorizzata in un array arr[]. Vogliamo applicare un processo iterativo di eliminazione a coppie (pairwise destruction).
+Se due parole consecutive all'interno della sequenza sono identiche, esse si cancellano a vicenda e vengono rimosse. Quando due parole uguali vengono eliminate, 
+la sequenza si "richiude": questo potrebbe fare entrare in contatto parole precedentemente distanti, creando nuove adiacenze che potrebbero a loro volta elidersi.
+Il processo di eliminazione continua iterativamente finché non rimangono più coppie di parole consecutive uguali.
+Si scriva una funzione in linguaggio C con la seguente firma: 
+-	int countRemainingWords(char* arr[], int n) 
+che determini e restituisca il numero di parole rimanenti al termine del processo di eliminazione.
+È obbligatorio implementare e utilizzare una struttura dati Stack basata su liste collegate dinamiche (Linked List Stack), adattata per la gestione di stringhe (char*).
+
+La struct dovrà dunque essere:
+typedef struct StackNode {
+    char* data;
+    struct StackNode* next;
+} StackNode;
+
+Esempi:
+- Input: arr[] = {"aba", "abc", "aaa", "aaa", "abc"}
+- Output: 1
+Spiegazione:
+"aaa" e "aaa" si eliminano -> resta ["aba", "abc", "abc"].
+"abc" e "abc" si eliminano -> resta ["aba"].
+Non posso più fare eliminazioni.
+Output: 1
+
+- Input: arr[] = {"tom", "jerry", "jerry", "tom"}
+- Output: 0
+Spiegazione:
+"jerry" e "jerry" si eliminano -> resta ["tom", "tom"].
+tom" e "tom" si eliminano -> array vuoto.
+L'array è vuoto.
+Output: 0
+
+3. Scrivi un programma in linguaggio C che implementi una funzione per comprimere una stringa s. La compressione deve essere effettuata sostituendo ciascun gruppo 
+di caratteri identici consecutivi con il carattere corrispondente (rigorosamente in formato minuscolo) seguito dalla rispettiva frequenza.
+Il programma deve soddisfare i seguenti requisiti funzionali e architetturali:
+- Confronto ASCII: I caratteri devono essere confrontati direttamente tramite i loro valori ASCII (distinguendo tra maiuscole e minuscole; 
+ad esempio, 'a' e 'A' sono considerati caratteri differenti).
+- Isolamento dei Gruppi: Se lo stesso carattere compare nuovamente dopo l'interruzione di un carattere differente, esso deve formare un nuovo gruppo separato 
+(le frequenze dei caratteri non adiacenti non devono essere sommate).
+
+Per la risoluzione del problema e la gestione dell'ordine di aggregazione, è obbligatorio l'uso di una struttura dati Stack 
+implementata tramite liste collegate dinamiche (malloc/free).
+
+La struct è definita come:
+typedef struct StackNode {
+    char ch; // il carattere
+    int count; // la frequenza
+    struct StackNode* next;
+} StackNode;
+
+Esempi:
+- Input: s = "aaABBb"
+- Output: "a2A1B2b1"
+
+- Input: s = "aaacca"
+- Output: "a3c2a1"
+Spiegazione: I primi tre 'a' formano il primo gruppo (a3), seguiti da due 'c' (c2). L'ultima 'a' si trova alla fine della stringa ed è separata dalle prime, 
+formando un gruppo indipendente (a1).
+
+
+4. Consideriamo un evento a cui partecipano n persone, numerate da 0 a n-1. I rapporti di conoscenza reciproca tra i partecipanti sono modellati attraverso una 
+matrice quadrata mat[][] di dimensioni n x n, definita come segue:
+- mat[i][j] == 1 indica che la persona i conosce la persona j.
+- mat[i][j] == 0 indica che la persona i non conosce la persona j.
+(Nota: per definizione, si assume che mat[i][i] == 1 per ogni persona).
+
+All'interno di questo gruppo, vogliamo determinare se è presente una "celebrità". Una persona è definita celebrità se e solo se soddisfa contemporaneamente le seguenti due condizioni:
+1) Tutti gli altri partecipanti conoscono la celebrità (la sua colonna nella matrice è composta interamente da 1, ad eccezione della diagonale principale).
+2) La celebrità non conosce nessuno, tranne se stessa (la sua riga nella matrice è composta interamente da 0, ad eccezione di mat[i][i] == 1).
+
+Si scriva una funzione in linguaggio C int findCelebrity(int** mat, int n) che riceva come argomenti la matrice mat[][] e la dimensione n, 
+restituendo l'indice numerico della celebrità, qualora esista, altrimenti -1.
+
+È obbligatorio implementare e utilizzare una struttura dati Stack basata su liste collegate dinamiche.
+
+La struct è definita così:
+typedef struct StackNode {
+    int data;
+    struct StackNode* next;
+} StackNode;
+
+Esempi:
+- Input:mat[][] = [[1, 1, 0], [0, 1, 0], [0, 1, 1]]
+- Output: 1
+Spiegazione: La persona 0 e la persona 2 conoscono entrambe la persona 1. La persona 1 non conosce nessuno al di fuori di sé. Di conseguenza, l'indice 1 è la celebrità.
+
+- Input:mat[][] = [[1, 1], [1, 1]]
+- Output: -1
+Spiegazione: Le due persone si conoscono reciprocamente, quindi nessuna delle due soddisfa la definizione di celebrità
+
+Hint: L'idea chiave è utilizzare uno Stack per eliminare i falsi candidati confrontando le persone a coppie. 
+1) Fase di inserimento iniziale: Scorri con un ciclo da 0 a n-1 e inserisci tutti gli indici delle persone nello stack. 
+Ricorda di gestire correttamente il puntatore top dello stack ad ogni push, allocando dinamicamente la memoria con malloc e aggiornando il campo next.
+2) Fase di riduzione tramite Stack (Eliminazione a coppie): Fintanto che nello stack sono presenti almeno due elementi, estrai (pop) due indici consecutivi, che chiameremo a e b:
+	- Gestisci il pop facendo avanzare il puntatore top = top->next e liberando la memoria del nodo estratto tramite free().
+	- Confronto nella matrice:
+		- Se mat[a][b] == 1 (la persona a conosce la persona b): allora a non può essere una celebrità (poiché una celebrità non conosce nessuno al di fuori di sé). 
+		Di conseguenza, scarta a e reinserisci nello stack solo b.
+		- Se mat[a][b] == 0 (la persona a non conosce la persona b): allora b non può essere una celebrità (poiché tutti i partecipanti devono conoscere la celebrità). 
+		Di conseguenza, scarta b e reinserisci nello stack solo a.
+	Ripeti questo procedimento finché nello stack non rimane un unico candidato. 
+
+3) Fase di validazione finale: Quando nello stack rimane un unico candidato, estrailo (ricordandoti di rilasciare l'ultimo nodo allocato). 
+Poiché il processo ad eliminazione garantisce che se esiste una celebrità, questa è il candidato rimasto, devi effettuare un'ultima scansione lineare 
+su riga e colonna della matrice per verificare che il candidato rispetti rigorosamente entrambe le condizioni della definizione. 
+Se le supera, restituisci l'indice, altrimenti restituisci -1.
+
+Funzione TrovaCelebrità(matrice mat[][], intero n):
+    
+    // FASE 1: Inserimento iniziale
+    Per ogni persona i da 0 a n - 1:
+        push(stack, i)
+    
+    // FASE 2: Riduzione dei candidati a coppie
+    Mentre lo stack contiene almeno 2 elementi:
+        a = pop(stack)
+        b = pop(stack)
+        
+        Se mat[a][b] == 1:
+            // 'a' conosce 'b' -> 'a' non è una celebrità, teniamo 'b'
+            push(stack, b)
+        Altrimenti:
+            // 'a' non conosce 'b' -> 'b' non è una celebrità, teniamo 'a'
+            push(stack, a)
+        Fin Se
+    Fin Mentre
+    
+    // Estraiamo l'unico candidato rimasto
+    candidato = pop(stack)
+    
+    // FASE 3: Validazione finale del candidato
+    Per ogni persona i da 0 a n - 1:
+        Se i != candidato:
+            // Il candidato non deve conoscere nessuno AND tutti devono conoscere il candidato
+            Se mat[candidato][i] == 1 OPPURE mat[i][candidato] == 0:
+                Restituisce -1
+            Fin Se
+        Fin Se
+    Fin Per
+    
+    Restituisce candidato
+
+
+5. Si progetti una struttura dati di tipo SpecialStack (una pila speciale) basata su liste collegate dinamiche, la quale deve supportare le seguenti operazioni fondamentali:   
+- push(x): Inserisce l'elemento intero x in cima allo stack.   
+- pop(): Rimuove e restituisce l'elemento in cima allo stack.   
+- peek(): Restituisce l'elemento in cima allo stack senza rimuoverlo (restituisce -1 se lo stack è vuoto).   
+- getMin(): Restituisce l'elemento minimo attualmente presente nello stack in tempo costante O(1), senza scorrere la lista (restituisce -1 se lo stack è vuoto).   
+
+La struttura dati deve essere implementata tramite liste collegate.
+Lo spazio ausiliario aggiuntivo deve essere rigorosamente O(1). Ossia, non si possono usare altre strutture dati d'appoggio per valutare l'elemento minimo.
+Si scriva il codice completo in linguaggio C per la gestione dello SpecialStack e delle relative operazioni. Si discuta inoltre la complessità temporale worst-case
+delle operazioni implementate motivando le scelte implementative effettuate.
+
+
+--------------------------------------------- 
+
+
+QUEUE
+
+1. Data una struttura dati Coda (Queue) implementata mediante liste collegate dinamiche, si scriva un programma in linguaggio C che implementi una funzione
+per invertire l'ordine degli elementi della coda. L'operazione di inversione deve fare in modo che l'elemento originariamente in testa (front) diventi l'ultimo della coda (tail),
+e viceversa, riorganizzando tutti gli elementi intermedi di conseguenza.
+È richiesto di sviluppare e presentare due distinte soluzioni:
+- Soluzione 1 (Stack Esplicito): Utilizzando una struttura dati Stack basata su liste collegate come struttura ausiliaria per invertire l'ordine degli elementi
+attraverso operazioni di prelievo e inserimento (dequeue/push/pop/enqueue).
+Struct definite come:
+
+// Nodo generico per Coda e Stack
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Definizione della Coda (Queue)
+typedef struct {
+    Node* front;
+    Node* tail;
+} Queue;
+
+- Soluzione 2 (Stack Ricorsivo): Sfruttando lo stack di sistema (ricorsione), senza l'uso di strutture dati ausiliarie esplicite, operando direttamente sulla coda
+tramite chiamate ricorsive.
+
+2. Data una struttura dati Coda (Queue) di dimensione n pari, implementata tramite liste collegate dinamiche, si scriva una funzione in linguaggio C che riorganizzi
+la coda intervallando (interleaving) la sua prima metà con la seconda metà.
+
+L'interleaving consiste nel posizionare alternativamente un elemento proveniente dalla prima metà della coda e un elemento proveniente dalla seconda metà,
+mantenendo inalterato l'ordine relativo originario all'interno di ciascuna metà.
+La soluzione deve essere sviluppata rispettando l'incapsulamento della struttura Coda (utilizzando le operazioni primitive di enqueue() e dequeue()).
+
+Esempi:
+- Input: q = [2, 4, 3, 1] (Dimensione n = 4, prima metà: [2, 4], seconda metà: [3, 1])
+- Output: [2, 3, 4, 1]
+
+- Input: q = [3, 5] (Dimensione n = 2, prima metà: [3], seconda metà: [5])
+- Output: [3, 5]
+
+Hint: Una soluzione consiste in spezzare la coda principale in due metà uguali (mantenendo l'ordine originale) utilizzando due code ausiliarie (firstHalf e secondHalf),
+per poi fonderle insieme alternando gli elementi. Tempo O(n) e spazio O(n).
+1) Calcolo della dimensione: Determina il numero totale di elementi n presenti nella coda e calcola la metà
+2) Creazione delle code ausiliarie: Inizializza due code ausiliarie, ad esempio firstHalf e secondHalf
+3) Estrai i primi n/2 elementi dalla coda principale e inseriscili nella coda ausiliaria firstHalf. Come mantieni l'ordine relativo degli elementi originali?
+Pensa alle proprietà della Coda.
+4) Estrai i restanti half elementi e spostali in secondHalf (anche qui stando attent all'ordine degli elementi originali)
+5) Fase di Interleaving (Fusione): Fintanto che le code ausiliarie non sono vuote, preleva un elemento da firstHalf e accodalo nella coda principale, 
+poi preleva un elemento da secondHalf e accodalo nella coda principale.
