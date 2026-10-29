@@ -63,30 +63,35 @@
             gap: 10px;
         }
 
-        /* Stile per il box comunicazioni */
+        /* Stile per il box comunicazioni ottimizzato e compatto */
         .announcement-box {
             background-color: #fffaf0;
             border: 1px solid #fbd38d;
             border-left: 4px solid #dd6b20;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 8px;
             margin-bottom: 25px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #7b341e;
         }
 
         .announcement-box h4 {
             margin: 0 0 6px 0;
             color: #c05621;
-            font-size: 1.05rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .announcement-box p {
-            margin: 0;
-            line-height: 1.5;
+        .announcement-box ul {
+            margin: 4px 0 0 18px;
+            padding: 0;
+            line-height: 1.4;
+        }
+
+        .announcement-box li {
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -114,9 +119,11 @@
 
         <!-- SEZIONE COMUNICAZIONI -->
         <div class="announcement-box">
-            <h4>📢 Comunicazioni</h4>
-            <p><strong>Avviso del 20 Ottobre 2026:</strong> Si avvisano gli studenti che il tutoraggio del corso verrà effettuato il <strong>giovedì in aula B10 dalle 11:30 alle 13:30</strong></p>
-            <p><strong>Avviso del 13 Ottobre 2026:</strong> Si avvisano gli studenti che il turno di tutoraggio previsto oggi alle ore 16:00 <strong>verrà effettuato in aula B1</strong></p>
+            <h4>📢 Comunicazioni per le prossime lezioni</h4>
+            <ul>
+                <li><strong>Lunedì 02/11:</strong> "test" delle competenze su singly linked list e implementazione di stack e coda (vi farò delle domande, niente di compromettente), doubly linked list (tentativo se c'è tempo).</li>
+                <li><strong>Venerdì 06/11:</strong> eventuale continuazione delle doubly linked list, alberi binari e cenni di alberi n-ari.</li>
+            </ul>
         </div> 
 
         <div class="course-card">
