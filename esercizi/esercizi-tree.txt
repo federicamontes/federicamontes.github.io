@@ -1,0 +1,44 @@
+ESERCIZI ALBERI
+
+Sezione 0: questi esercizi riguardano la lezione sugli alberi.
+
+0.1 Implementa la funzione int num_nodi_iterativa(Node* root), che dato un albero calcoli il numero di nodi usando un algoritmo iterativo invece di ricorsivo.
+
+0.2 Implementa la funzione Node * trova_padre(Node* root, Node* v), che dato un albero e un nodo v, trovi il genitore di v. Immaginiamo di avere una struct Node
+priva del campo Node * parent.
+
+0.3 Implementa la funzione Node* lookup_node(Node* root, int key), che dato un albero BST e un intero key, cerchi il nodo con campo uguale a key nell'albero.
+
+0.4 Implementa le funzioni Node* min_node(Node* root) e Node* max_node(Node* root), che dato un albero BST calcoli il minimo e il massimo di tale albero.
+
+0.5 Implementa la funzione Node* insert_bst_rec(Node* root, Node* parent, int key, int data), che dato un albero BST, un nodo parent, un intero key e un intero data, 
+crei e inserisca un nuovo nodo (che avrà campo data uguale al parametro data), nella posizione corretta dell'albero (ossia ordinata rispetto a key).
+
+Gli esercizi che seguono sono di livello base-facile, gli esercizi marcati con '*' sono considerati più difficili.
+
+1. Dato un albero binario, scrivi una funzione che conti le foglie in esso presenti. Un nodo è un nodo foglia se non ha figli. Implementa sia la versione ricorsiva che
+quella iterativa. Quali sono le complessità temporale e spaziale dei due approcci?
+
+2. Dato un albero binario, scrivi una funzione che restituisca il numero di tutti i nodi NON foglia (nodi interni) presenti nell'albero binario dato.
+Implementare la funzione in due modi: usando la visita in postorder ricorsiva e usando la visita BFS. Quali sono le complessità temporale e spaziale nei due casi?
+
+3. Dato un albero binario, scrivi una funzione che trovi la profondità massima dell'albero, usando l'algoritmo ricorsivo della DFS. La profondità massima o altezza dell'albero 
+è il numero di archi presenti nell'albero dalla radice al nodo più profondo. In altri termini, l'altezza dell'albero è il cammino di lunghezza massima radice-foglia.
+Qual è la complessità temporale e spaziale? Cosa cambierebbe se usassimo una BFS per risolvere lo stesso problema?
+
+4. Dato un albero binario, determina se è bilanciato in altezza o meno. La complessità temporale deve essere O(n).
+Nota: Un albero binario è considerato bilanciato in altezza se la differenza assoluta tra le altezze del sottoalbero sinistro e destro è al massimo 1 per ogni nodo dell'albero.
+
+5*. Dato un albero binario, converti l'albero binario nel suo albero speculare (inverti l'albero).
+Nota: Il Mirror di un albero binario T è un altro albero binario M(T) in cui i figli sinistro e destro di tutti i nodi non foglia sono scambiati tra loro.
+L'esercizio può essere svolto sia in forma ricorsiva che usando la BFS. Motiva la tua scelta e discuti la complessità.
+
+6. Dato un albero binario con n nodi, determina se tutti i nodi foglia si trovano allo stesso livello oppure no. Restituisci true se tutti i nodi foglia 
+sono allo stesso livello, e false altrimenti. La complessità ottimale è O(n) temporale, e O(h) spaziale, h altezza dell'albero. Risolvi l'esercizio utilizzando 
+un algoritmo che rispetti questa complessità.
+
+7*. Dato un albero binario avente n nodi e un intero k, restituisci tutti i nodi che si trovano a distanza k dalla radice (la radice è considerata a distanza 
+0 da se stessa). I nodi devono essere restituiti da sinistra a destra. Risolvi l'esercizio usando la visita ricorsiva.
+
+8. Dato un albero binario in cui ogni nodo memorizza un valore, restituisci la somma dei valori di tutti i suoi nodi foglia.
+
